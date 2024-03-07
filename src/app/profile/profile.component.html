@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">Profile</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="mainDiv">
+    <form action="">
+        <div class="row1">
+            <div class="photo">
+                <img [src]="image.getImageData()" alt="Uploaded Image" height="200">
+            </div>
+            <button mat-raised-button color="warn" (click)="onCloseClick()">Edit photo</button>
+            <button mat-raised-button color="warn" (click)="onCloseClick()">Edit profile</button>
+        </div>
+        <div class="row2">
+            <!-- <p>Lorem ipsum dolor sit amet consectetur <br>adipisicing elit. Dolores quisquam harum<br> et, obcaecati corrupti libero in <br> suscipit unde laborum possimus?</p><br> -->
+            <div>
+                <mat-label class="profile">Frist name : {{myService.getFname()}}</mat-label><br>
+                <mat-label class="profile">Last name : {{myService.getLname()}}</mat-label><br>
+                <mat-label class="profile">Email : {{myService.getEmail()}}</mat-label><br>
+                <mat-label class="profile">Age : {{myService.getAge()}}</mat-label><br>
+                <mat-label class="profile">State : {{myService.getmyState()}}</mat-label><br>
+                <mat-label class="profile">Country : {{myService.getMyCountry()}}</mat-label><br>
+                <mat-label class="profile">Home Address 1 : {{myService.gethome1()}}</mat-label><br>
+                <mat-label class="profile">Home Address 2 : {{myService.gethome2()}}</mat-label><br>
+                <mat-label class="profile">Company Address 1 : {{myService.getcomp1()}}</mat-label><br>
+                <mat-label class="profile">Copmany Address 2 : {{myService.getcomp2()}}</mat-label><br>
+                <mat-label class="profile">Tags : {{myService.getTag()}}</mat-label><br>
+            </div>
+
+
+            <button type="submit" mat-raised-button color="accent" (click)="submitData()"
+                (click)="onCloseClick()">Agree</button>
+        </div>
+
+    </form>
+
+
+</div>

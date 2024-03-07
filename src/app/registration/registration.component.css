@@ -1,0 +1,56 @@
+.button {
+  margin-left: 500px;
+}
+
+.photo {
+  border: solid 2px black;
+  height: 200px;
+}
+
+.div2 {
+  border: solid 2px black;
+  padding: 10px;
+  margin: 5px;
+}
+
+.main-Div {
+  display: flex;
+  flex-direction: row;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.tags {
+  display: flex;
+  flex-direction: row;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.div1 {
+  text-align: center;
+  padding: 10px;
+  margin: 5px;
+
+}
+
+.one {
+  width: 650px;
+  margin: 10px;
+}
+
+.two {
+  width: 300px;
+  margin: 10px;
+}
+
+.mat-dialog-content {
+  height: 100%;
+}

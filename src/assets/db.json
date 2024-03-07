@@ -1,0 +1,29 @@
+{
+  "posts": [
+    
+  ],
+
+  
+  "states": [
+    {
+      "state": "Maharstara"
+    },
+    {
+      "state": "Gujrat"
+    }
+  ],
+  "countries": [
+    {
+      "id": 1,
+      "country": "india"
+    },
+    {
+      "id": 2,
+      "country": "UAE"
+    },
+    {
+      "id": 1,
+      "country": "USA"
+    }
+  ]
+}

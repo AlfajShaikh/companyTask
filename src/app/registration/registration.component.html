@@ -1,0 +1,151 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">Register</span>
+    <button mat-icon-button class="close-button" (click)="onCloseClick()">
+      <mat-icon style="font-size: 24px;">close</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<form [formGroup]="registerForm" enctype="multipart/form-data">
+  <div class="main-Div">
+    <div class="div1">
+      <div *ngIf="imageUrl" class="photo">
+
+        <img [src]="imageUrl" alt="Uploaded Image" height="200">
+      </div>
+      <div *ngIf="!imageUrl" class="photo">
+        <img src="../../assets/icons8-user-64.png" height="200" alt="Uploaded Image" formControlName="image">
+      </div>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*">
+      <div *ngIf="invalidDimensions" class="error-message">Image dimensions should be 310 x 325 pixels.</div>
+
+    </div>
+    <div class="div2">
+      <div fxFlex fxLayout="column" class="input">
+
+        <table>
+          <div class="row1">
+            <mat-form-field appearance="fill" class="two">
+              <mat-label>First name</mat-label>
+              <input matInput  formControlName="fname" required>
+              <mat-error *ngIf="registerForm.controls.fname.touched && registerForm.controls.fname.invalid">
+                <div *ngIf="registerForm.controls.fname.errors.pattern" class="error-message">
+                  <p> Only alphabetic characters and the length 20</p>
+
+                </div>
+              </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field appearance="fill" class="two">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lname">
+              <mat-error *ngIf="registerForm.controls.lname.touched && registerForm.controls.lname.invalid">
+                <div *ngIf="registerForm.controls.lname.errors.pattern" class="error-message">
+                  <p> Only alphabetic characters and the length 20</p>
+
+                </div>
+              </mat-error>
+            </mat-form-field>
+
+          </div>
+          <div class="row2">
+
+            <tr>
+              <p>
+                <mat-form-field appearance="fill" class="one">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" formControlName="email">
+                  <mat-error *ngIf="registerForm.controls.email.touched && registerForm.controls.email.invalid">
+                    <div *ngIf="registerForm.controls.email.errors.pattern" class="error-message">
+                      <p>Fill email address correct format</p>
+
+                    </div>
+                  </mat-error>
+                </mat-form-field>
+              </p>
+              <p>
+                <mat-label>Age</mat-label>&nbsp;
+                <mat-slider min="20" max="60" step="1" showTickMarks discrete>
+                  <input matSliderThumb class="one" formControlName="age" [(ngModel)]="myVal"
+                    (input)="formatLabel($event)">
+                </mat-slider>
+              </p>
+              <mat-form-field appearance="fill" class="one">
+                <mat-label>State</mat-label>
+                <mat-select formControlName="state">
+                  <div *ngFor="let item of myData">
+                    <mat-option [value]="item.state"> {{item.state}}</mat-option>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </tr>
+            <tr>
+              <mat-form-field appearance="fill" class="one">
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="country">
+                  <div *ngFor="let item of myData2">
+                    <mat-option [value]="item.country" name="mySelect">{{item.country}}</mat-option>
+                  </div>
+                </mat-select>
+              </mat-form-field>
+            </tr>
+            <tr>
+              <div>
+                <h4>Address choose</h4>
+                <mat-radio-group>
+                  <mat-radio-button type="radio" name="options" (click)="showInputBox()"
+                    value="auto">Home</mat-radio-button>
+                  <mat-radio-button type="radio" name="options" (click)="hideInputBox()"
+                    value="always">Company</mat-radio-button>
+                </mat-radio-group>
+              </div>
+              <div *ngIf="showInput">
+                <mat-form-field appearance="fill" class="two">
+                  <mat-label>Home Address 1</mat-label>
+                  <input matInput formControlName="homeaddone">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="two">
+                  <mat-label>Home Address 2</mat-label>
+                  <input matInput placeholder="Placeholder" formControlName="homeaddtwo">
+                </mat-form-field>
+              </div>
+              <div *ngIf="!showInput">
+                <mat-form-field appearance="fill" class="two">
+                  <mat-label>Company Address 1</mat-label>
+                  <input matInput  formControlName="companyaadone">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="two">
+                  <mat-label>Company Address 2</mat-label>
+                  <input matInput formControlName="companyaadtwo">
+                </mat-form-field>
+              </div>
+              <p>
+              <div formArrayName="tags" class="tags">
+                <div *ngFor="let tag of registerForm.get('tags').controls; let i = index" [formGroupName]="i">
+                  <mat-form-field>
+                    <button mat-icon-button (click)="removeTag(i)" color="warn">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                    <input matInput formControlName="tagName" placeholder="Tag Name">
+
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-button color="primary" (click)="addTag()">Add Tag</button>
+
+              <!-- </p> -->
+            </tr>
+          </div>
+        </table>
+        <div class="button">
+          <button type="submit" mat-raised-button color="primary" (click)="submitForm()" (click)="openSecondDialog()"
+            [disabled]="registerForm.invalid">Submit</button>&nbsp;
+          <button mat-button color="primary" (click)="onCloseClick()">Cancel</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
