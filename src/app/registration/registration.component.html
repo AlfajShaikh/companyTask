@@ -28,7 +28,7 @@
           <div class="row1">
             <mat-form-field appearance="fill" class="two">
               <mat-label>First name</mat-label>
-              <input matInput  formControlName="fname" required>
+              <input matInput formControlName="fname" required>
               <mat-error *ngIf="registerForm.controls.fname.touched && registerForm.controls.fname.invalid">
                 <div *ngIf="registerForm.controls.fname.errors.pattern" class="error-message">
                   <p> Only alphabetic characters and the length 20</p>
@@ -114,7 +114,7 @@
               <div *ngIf="!showInput">
                 <mat-form-field appearance="fill" class="two">
                   <mat-label>Company Address 1</mat-label>
-                  <input matInput  formControlName="companyaadone">
+                  <input matInput formControlName="companyaadone">
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="two">
                   <mat-label>Company Address 2</mat-label>
@@ -131,9 +131,15 @@
                     <input matInput formControlName="tagName" placeholder="Tag Name">
 
                   </mat-form-field>
+
+
                 </div>
+
               </div>
-              <button mat-button color="primary" (click)="addTag()">Add Tag</button>
+
+              <mat-checkbox formControlName="isChecked">Check me</mat-checkbox>
+              
+              <button type="submit" mat-button color="primary" (click)="addTag()">Add Tag</button>
 
               <!-- </p> -->
             </tr>

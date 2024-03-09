@@ -1,5 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
+import { RegistrationComponent } from '../registration/registration.component';
+import { ProfileComponent } from '../profile/profile.component';
 
 @Injectable({
   providedIn: 'root'
@@ -8,16 +11,19 @@ export class MyServicesService {
 
   fname: any;
   private _lname: any;
-  
-  email:any;
-  age:any;
-  state:any;
-  country:any;
-  home1:any;
-  home2:any;
-  comp1:any;
-  comp2:any;
-  tag:any;
+
+  email: any;
+  age: any;
+  state: any;
+  country: any;
+  home1: any;
+  home2: any;
+  comp1: any;
+  comp2: any;
+  tag: any;
+  isCheked: any;
+  DIALOGREF_1!: MatDialogRef<RegistrationComponent>;
+  DIALOGREF_2!: MatDialogRef<ProfileComponent>;
 
   url = "http://localhost:3000/";
   constructor(private http: HttpClient) { }
@@ -34,7 +40,7 @@ export class MyServicesService {
     })
   }
 
-  
+
   getCountry() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(this.url + "countries", {
@@ -56,97 +62,92 @@ export class MyServicesService {
     this.fname = name;
   }
 
-  setLname(name :String)
-  {
-    this._lname=name
+  setLname(name: String) {
+    this._lname = name
   }
 
-  setEmail(name:String)
-  {
-    this.email=name
+  setEmail(name: String) {
+    this.email = name
   }
 
-  setAge(age:String)
-  {
-    this.age=age;
+  setAge(age: String) {
+    this.age = age;
   }
 
-  setState(state:String)
-  {
-    this.state=state
+  setState(state: String) {
+    this.state = state
   }
 
-  setCountry(name:String)
-  {
-    this.country=name
+  setIsChecked(name: String) {
+    this.isCheked = name;
   }
-  setHome1(name:String)
-  {
-    this.home1=name
+  setCountry(name: String) {
+    this.country = name
   }
-
-  setHome2(name:String)
-  {
-    this.home2=name
-  }
-  setComp1(name:string)
-  {
-    this.comp1=name
-  }
-  setComp2(name:String)
-  {
-    this.comp2=name
+  setHome1(name: String) {
+    this.home1 = name
   }
 
-  setTag(name:String)
-  {
-    this.tag=name;
+  setHome2(name: String) {
+    this.home2 = name
+  }
+  setComp1(name: string) {
+    this.comp1 = name
+  }
+  setComp2(name: String) {
+    this.comp2 = name
   }
 
-  getLname()
-  {
+  setTag(name: String) {
+    this.tag = name;
+  }
+
+  getLname() {
     return this._lname;
   }
-  getEmail()
-  {
+  getEmail() {
     return this.email
   }
-  getAge()
-  {
+  getAge() {
     return this.age
   }
-  getmyState()
-  {
+  getmyState() {
     return this.state
   }
 
-  getMyCountry()
-  {
+  getMyCountry() {
     return this.country;
   }
 
-  gethome1()
-  {
+  gethome1() {
     return this.home1
   }
 
-  gethome2()
-  {
+  gethome2() {
     return this.home2
   }
 
-  getcomp1():String
-  {
+  getIsChecked() {
+    return this.isCheked
+  }
+  getcomp1(): String {
     return this.comp1
   }
 
-  getcomp2():String
-  {
+  getcomp2(): String {
     return this.comp2
   }
 
-  getTag():string
-  {
+  getTag(): string {
     return this.tag
+  }
+
+  closeDialogs(): any {
+    if (this.DIALOGREF_1) {
+      this.DIALOGREF_1.close()
+    }
+    if (this.DIALOGREF_2) {
+      this.DIALOGREF_2.close()
+    }
   }
 }

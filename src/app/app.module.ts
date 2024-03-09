@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     MatButtonModule,
     MatIconModule,
+    MatCheckboxModule,
     MatFormFieldModule, MatInputModule, MatDividerModule, MatIconModule,
     FormsModule, MatFormFieldModule, MatDialogModule, ReactiveFormsModule,
     MatRadioModule

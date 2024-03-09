@@ -15,17 +15,17 @@
         <div class="row2">
             <!-- <p>Lorem ipsum dolor sit amet consectetur <br>adipisicing elit. Dolores quisquam harum<br> et, obcaecati corrupti libero in <br> suscipit unde laborum possimus?</p><br> -->
             <div>
-                <mat-label class="profile">Frist name : {{myService.getFname()}}</mat-label><br>
-                <mat-label class="profile">Last name : {{myService.getLname()}}</mat-label><br>
-                <mat-label class="profile">Email : {{myService.getEmail()}}</mat-label><br>
-                <mat-label class="profile">Age : {{myService.getAge()}}</mat-label><br>
-                <mat-label class="profile">State : {{myService.getmyState()}}</mat-label><br>
+                <mat-label class="profile">I am {{myService.getFname()}} {{myService.getLname()}} and I am  {{myService.getAge()}} old you can send your emails to <span class="EMAIL">{{myService.getEmail()}}</span>  I live in state of {{myService.getmyState()}} I like to play  {{myService.getTag()}} and please send me <span *ngIf="isChecked">Please send me newsletters</span> please reach out to me on my phone number </mat-label><br>
+               
+                <!-- <mat-label class="profile">Email :</mat-label><br>
+                <mat-label class="profile">Age :</mat-label><br>
+                <mat-label class="profile">State : </mat-label><br>
                 <mat-label class="profile">Country : {{myService.getMyCountry()}}</mat-label><br>
                 <mat-label class="profile">Home Address 1 : {{myService.gethome1()}}</mat-label><br>
                 <mat-label class="profile">Home Address 2 : {{myService.gethome2()}}</mat-label><br>
                 <mat-label class="profile">Company Address 1 : {{myService.getcomp1()}}</mat-label><br>
                 <mat-label class="profile">Copmany Address 2 : {{myService.getcomp2()}}</mat-label><br>
-                <mat-label class="profile">Tags : {{myService.getTag()}}</mat-label><br>
+                <mat-label class="profile">Tags : </mat-label><br> -->
             </div>
 
 

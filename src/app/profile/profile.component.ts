@@ -12,7 +12,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public myService: MyServicesService, public image: ImageServiceService, public dialogRef: MatDialogRef<ProfileComponent>, public dialogRef_2: MatDialogRef<RegistrationComponent>, private route: Router) { }
+  isChecked:any;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public myService: MyServicesService, public image: ImageServiceService, public dialogRef: MatDialogRef<ProfileComponent>, public dialogRef_2: MatDialogRef<RegistrationComponent>, private route: Router) {
+
+    this.isChecked=myService.getIsChecked()
+
+   }
 
   onCloseClick(): void {
     this.dialogRef.close();
@@ -32,13 +37,16 @@ export class ProfileComponent {
       comp_address_1: this.myService.getcomp1(),
       comp_address_2: this.myService.getcomp2(),
       tags: this.myService.getTag(),
-      image: this.myService.getImage()
+      isCheck:this.myService.getIsChecked(),
+      image: this.myService.getImage(),
+      
     }
-    this.myService.submitData(data).subscribe((response: any) => {
-      alert("data submitted");
-    }, (error) => {
-      alert(error)
-    })
+    
+    // this.myService.submitData(data).subscribe((response: any) => {
+    //   alert("data submitted");
+    // }, (error) => {
+    //   alert(error)
+    // })
   }
 }
 
