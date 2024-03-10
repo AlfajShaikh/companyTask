@@ -146,9 +146,9 @@
           </div>
         </table>
         <div class="button">
-          <button type="submit" mat-raised-button color="primary" (click)="submitForm()" (click)="openSecondDialog()"
-            [disabled]="registerForm.invalid">Submit</button>&nbsp;
-          <button mat-button color="primary" (click)="onCloseClick()">Cancel</button>
+          <button type="submit" mat-raised-button color="primary" (click)="submitForm()" (click)="openSecondDialog()" [disabled]="!registerForm.valid"  (click)="onCloseClick()"
+            >Submit</button>&nbsp;
+          <button mat-button color="primary" (click)="onCloseClick()" >Cancel</button>
         </div>
 
       </div>

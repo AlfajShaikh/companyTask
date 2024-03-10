@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { RegistrationComponent } from '../registration/registration.component';
 import { ProfileComponent } from '../profile/profile.component';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,19 @@ export class MyServicesService {
     })
   }
 
-
+  getDetails() {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.get(this.url + "posts", {
+      headers
+    })
+  }
+  update(id:any,newData: any) {
+    const url = `${this.url}${"posts"}/${id}`;
+    return this.http.put(url, newData);
+  }
+  getData(): Observable<any> {
+    return this.http.get(this.url+"posts");
+  }
   getCountry() {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.get(this.url + "countries", {

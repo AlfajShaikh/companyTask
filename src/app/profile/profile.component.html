@@ -4,25 +4,35 @@
     </mat-toolbar-row>
 </mat-toolbar>
 <div class="mainDiv">
-    <form action="">
+    <form action="" [formGroup]="profileForm" enctype="multipart/form-data">
         <div class="row1">
             <div class="photo">
-                <img [src]="image.getImageData()" alt="Uploaded Image" height="200">
+                <div *ngIf="!imageUrl">
+                    <img [src]="image.getImageData()" alt="Uploaded Image" height="200" formControlName="image">
+                </div>
+                <div *ngIf="imageUrl">
+                    <img [src]="imageUrl" alt="Uploaded Image" height="200" formControlName="image">
+                </div>
+
             </div>
-            <button mat-raised-button color="warn" (click)="onCloseClick()">Edit photo</button>
-            <button mat-raised-button color="warn" (click)="onCloseClick()">Edit profile</button>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*" mat-raised-button color="warn">
+            <button mat-raised-button color="warn" (click)="editDialog()">Edit profile</button>
         </div>
         <div class="row2">
-           
+
             <div>
-                <mat-label class="profile">I am {{myService.getFname()}} {{myService.getLname()}} and I am  {{myService.getAge()}} old you can send your emails to <span class="EMAIL">{{myService.getEmail()}}</span>  I live in state of {{myService.getmyState()}} I like to play  {{myService.getTag()}} and please send me <span *ngIf="isChecked">Please send me newsletters</span> please reach out to me on my phone number </mat-label><br>
-               
-               
+                <mat-label class="profile">I am {{myService.getFname()}} {{myService.getLname()}} and I am
+                    {{myService.getAge()}} old you can send your emails to <span
+                        class="EMAIL">{{myService.getEmail()}}</span> I live in state of {{myService.getmyState()}} I
+                    like to play {{myService.getTag()}} and please send me <span *ngIf="isChecked">Please send me
+                        newsletters</span> please reach out to me on my phone number </mat-label><br>
+
+
             </div>
 
 
             <button type="submit" mat-raised-button color="accent" (click)="submitData()"
-                (click)="onCloseClick()">Agree</button>
+                (click)="editPhoto()">Agree</button>
         </div>
 
     </form>

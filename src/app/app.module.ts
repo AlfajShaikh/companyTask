@@ -20,12 +20,14 @@ import { MatSliderModule } from '@angular/material/slider';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { EditComponentComponent } from './edit-component/edit-component.component';
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
     RegistrationComponent,
-    ProfileComponent
+    ProfileComponent,
+    EditComponentComponent
   ],
   imports: [
     BrowserModule,

@@ -46,7 +46,7 @@ export class RegistrationComponent implements OnInit {
       companyaadone: [null],
       companyaadtwo: [null],
       tags: this.formBuilder.array([this.createTag()]),
-      isChecked:[false],
+      isChecked: [false],
       image: [null, [Validators.required]]
     })
     this.myStates();
@@ -156,11 +156,17 @@ export class RegistrationComponent implements OnInit {
         companyaadtwo: forData.companyaadtwo,
         country: forData.country,
         tags: forData.tags,
-        isChecked:forData.isChecked,
+        isChecked: forData.isChecked,
         image: forData.image
 
       }
-     
+
+      this.myServices.submitData(data).subscribe((response: any) => {
+        alert("data submitted");
+      }, (error) => {
+        alert(error)
+      })
+
       this.myServices.setFname(data.fname)
       this.myServices.setLname(data.lname);
       this.myServices.setEmail(data.email);
@@ -178,6 +184,8 @@ export class RegistrationComponent implements OnInit {
       this.myServices.setTag(this.myTag);
       this.myServices.setIsChecked(data.isChecked);
       this.imageSharingService.setImageData(data.image)
+
+
     } else {
       alert("Please fill in all required fields correctly")
     }

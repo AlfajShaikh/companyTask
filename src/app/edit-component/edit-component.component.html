@@ -1,0 +1,145 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">Register</span>
+        <button mat-icon-button class="close-button" (click)="onCloseClick()">
+            <mat-icon style="font-size: 24px;">close</mat-icon>
+        </button>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<form [formGroup]="editForm">
+    <div class="main-Div">
+        <div class="div1">
+            <div fxFlex fxLayout="column" class="input">
+                <table>
+                    <div class="row1">
+                        <mat-form-field appearance="fill" class="two">
+                            <mat-label>First name</mat-label>
+                            <input matInput formControlName="fname" [(ngModel)]="lastdataValue.fname" required>
+                            <mat-error *ngIf="editForm.controls.fname.touched && editForm.controls.fname.invalid">
+                                <div *ngIf="editForm.controls.fname.errors.pattern" class="error-message">
+                                    <p> Only alphabetic characters and the length 20</p>
+
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="two">
+                            <mat-label>Last Name</mat-label>
+                            <input matInput formControlName="lname" [(ngModel)]="lastdataValue.lname">
+                            <mat-error *ngIf="editForm.controls.lname.touched && editForm.controls.lname.invalid">
+                                <div *ngIf="editForm.controls.lname.errors.pattern" class="error-message">
+                                    <p> Only alphabetic characters and the length 20</p>
+
+                                </div>
+                            </mat-error>
+                        </mat-form-field>
+
+                        <tr>
+                            <p>
+                                <mat-form-field appearance="fill" class="one">
+                                    <mat-label>Email</mat-label>
+                                    <input matInput type="email" formControlName="email"
+                                        [(ngModel)]="lastdataValue.email">
+                                    <mat-error
+                                        *ngIf="editForm.controls.email.touched && editForm.controls.email.invalid">
+                                        <div *ngIf="editForm.controls.email.errors.pattern" class="error-message">
+                                            <p>Fill email address correct format</p>
+
+                                        </div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </p>
+
+                            <p>
+                                <mat-label>Age</mat-label>&nbsp;
+                                <mat-slider min="20" max="60" step="1" showTickMarks discrete>
+                                    <input matSliderThumb class="one" formControlName="age"
+                                        [(ngModel)]="lastdataValue.age" (input)="formatLabel($event)">
+                                </mat-slider>
+                            </p>
+
+                            <mat-form-field appearance="fill" class="one">
+                                <mat-label>State</mat-label>
+                                <mat-select formControlName="state" [(ngModel)]="lastdataValue.state">
+                                    <div *ngFor="let item of myData">
+                                        <mat-option [value]="item.state"> {{item.state}}</mat-option>
+                                    </div>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" class="one">
+                                <mat-label>Country</mat-label>
+                                <mat-select formControlName="country" [(ngModel)]="lastdataValue.country">
+                                    <div *ngFor="let item of myData2">
+                                        <mat-option [value]="item.country" name="mySelect">{{item.country}}</mat-option>
+                                    </div>
+                                </mat-select>
+                            </mat-form-field>
+
+                            <div>
+                                <h4>Address choose</h4>
+                                <mat-radio-group>
+                                    <mat-radio-button type="radio" name="options" (click)="showInputBox()"
+                                        value="auto">Home</mat-radio-button>
+                                    <mat-radio-button type="radio" name="options" (click)="hideInputBox()"
+                                        value="always">Company</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div *ngIf="showInput">
+                                <mat-form-field appearance="fill" class="two">
+                                    <mat-label>Home Address 1</mat-label>
+                                    <input matInput formControlName="homeaddone" [(ngModel)]="lastdataValue.homeaddone">
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" class="two">
+                                    <mat-label>Home Address 2</mat-label>
+                                    <input matInput placeholder="Placeholder" formControlName="homeaddtwo"
+                                        [(ngModel)]="lastdataValue.homeaddtwo">
+                                </mat-form-field>
+                            </div>
+                            <div *ngIf="!showInput">
+                                <mat-form-field appearance="fill" class="two">
+                                    <mat-label>Company Address 1</mat-label>
+                                    <input matInput formControlName="companyaadone"
+                                        [(ngModel)]="lastdataValue.companyaadone">
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" class="two">
+                                    <mat-label>Company Address 2</mat-label>
+                                    <input matInput formControlName="companyaadtwo"
+                                        [(ngModel)]="lastdataValue.companyaadtwo">
+                                </mat-form-field>
+                            </div>
+                            <div formArrayName="tags" class="tags">
+                                <div *ngFor="let tag of editForm.get('tags').controls; let i = index"
+                                    [formGroupName]="i">
+                                    <mat-form-field>
+                                        <button mat-icon-button (click)="removeTag(i)" color="warn">
+                                            <mat-icon>close</mat-icon>
+                                        </button>
+                                        <div>
+                                            <input matInput formControlName="tagName" placeholder="Tag Name"
+                                            (ngModel)="lastdataValue.tags">
+                                        </div>
+                                       
+
+                                    </mat-form-field>
+
+
+                                </div>
+
+                            </div>
+                            <button type="submit" mat-button color="primary" (click)="addTag()">Add Tag</button><br>
+
+
+                    </div>
+                </table>
+            </div>
+        </div>
+        <div class="button">
+            <button type="submit" mat-raised-button color="primary" (click)="update()">change</button>&nbsp;
+            <button mat-button color="primary" (click)="onCloseClick()">Cancel</button>
+            <!-- <p>my last data:{{myResponse[myResponse.length-1].fname | json}}</p> -->
+        </div>
+    </div>
+</form>
+<div *ngFor="let item of myTags">
+    <p>{{item.t}}</p>
+</div>
