@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
         image: this.imageUrl
       });
       img.onload = () => {
-        if (img.width !== 512 || img.height !== 512) {
+        if (img.width !== 310 || img.height !==325) {
           this.invalidDimensions = true
 
         } else {

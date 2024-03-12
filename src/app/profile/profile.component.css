@@ -3,9 +3,13 @@
     margin: 20px;
 }
 
-.EMAIL
-{
+.EMAIL {
     color: blue;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
 }
 
 .row1,

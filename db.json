@@ -1,5 +1,46 @@
 {
-  "posts": [],
+  "posts": [
+    {
+      "id": "9e1c",
+      "fname": "ASA",
+      "lname": "ASA",
+      "email": "alfajshaikh55@gmail.com",
+      "age": 28,
+      "state": "Maharstara",
+      "homeaddone": "Pune",
+      "homeaddtwo": null,
+      "companyaadone": null,
+      "companyaadtwo": null,
+      "country": "india",
+      "tags": [
+        {
+          "tagName": "AS"
+        }
+      ],
+      "isChecked": true,
+      "image": "blob:http://localhost:4200/cb92a7da-5bf9-48c0-bfe4-4dafc0387b0a"
+    },
+    {
+      "id": "e1f9",
+      "fname": "ASAS",
+      "lname": "ASAS",
+      "email": "alfajshaikh55@gmail.com",
+      "age": 49,
+      "state": "Maharstara",
+      "homeaddone": "Pune",
+      "homeaddtwo": null,
+      "companyaadone": null,
+      "companyaadtwo": null,
+      "country": "india",
+      "tags": [
+        {
+          "tagName": "AS"
+        }
+      ],
+      "isChecked": true,
+      "image": "blob:http://localhost:4200/8a909091-8567-4d46-8176-837d31f77170"
+    }
+  ],
   "states": [
     {
       "state": "Maharstara",
